@@ -3,28 +3,32 @@
 	/*flex-wrap: wrap;*/
 }
 .grid {
-	width: 200px;
-	height: 400px;
+	width: 202px;
+	height: 402px;
 	display: flex;
 	flex-wrap: wrap;
 	background-color: yellow;
+	border: 1px solid black;
 }
 
 .grid div {
 	width: 20px;
 	height: 20px;
 	box-shadow: 2px solid black;
-	/*border: 0px solid black;*/
+	/*border: 0px 1px 0px 1px;
+	border-style: solid;
+	border-color: black;*/
 	/*background-color: red;*/
 }
 
 .mini-grid {
 	display: flex;
 	flex-wrap: wrap;
-	width:80px;
-	height: 80px;
+	width:82px;
+	height: 82px;
 	background-color: yellow;
 	margin-left: 15px;
+	border: 1px solid black;
 }
 
 .mini-grid div {
@@ -34,4 +38,12 @@
 
 .tetromino {
 	background-color: blue;
+}
+
+#start-button {
+	margin: 10px;
+}
+
+#pause-button {
+	margin: 10px;
 }

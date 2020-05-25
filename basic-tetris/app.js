@@ -3,6 +3,8 @@ document.addEventListener('DOMContentLoaded', () => {
 	let squares = Array.from(document.querySelectorAll('.grid div'));
 	const scoreDisplay = document.querySelector('#score');
 	const startButton = document.querySelector('#start-button');
+  const pauseButton = document.querySelector('#pause-button');
+  const resetButton = document.querySelector('#reset-button');
 
 	const GRID_WIDTH = 10;
 
@@ -46,10 +48,12 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentPosition = 4;
   let currentRotation = 0;
   let nextRandom = 0;
-  let timerId;
+  let timerId = null;
   let score = 0;
+  let isGameOver = false;
+  let initialTimerId = 0;
 
-  let colors = ['Green', 'Orange', 'Purple', 'Red', 'Maroon'];
+  let colors = ['Black', 'Orange', 'Blue', 'Red', 'Brown'];
 
   //Generating a random tetromino
   let random = Math.floor(Math.random()*theTetrominoes.length);
@@ -91,6 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('keyup', control);
   //move down function
   function moveDown() {
+    freeze();
   	undraw();
   	currentPosition += GRID_WIDTH;
   	draw();
@@ -99,7 +104,7 @@ document.addEventListener('keyup', control);
 
   // freeze function
   	function freeze() {
-  		if(current.some(index => squares[currentPosition + GRID_WIDTH + index].classList.contains('taken'))) {
+  		if(current.some(index => squares[currentPosition+ GRID_WIDTH + index].classList.contains('taken'))) {
   			current.forEach(index => squares[currentPosition + index].classList.add('taken'));
 
   			//start a new tetromino falling
@@ -111,7 +116,8 @@ document.addEventListener('keyup', control);
         displayShape();
         addScore();
         gameOver();
-  		}
+      }
+  		
   	}
 
   	//move left function
@@ -177,17 +183,40 @@ document.addEventListener('keyup', control);
     
     }
 
+    // startButton.addEventListener('click', () => {
+    //   if(timerId) {
+    //     clearInterval(timerId);
+    //     timerId = null;
+    //   }
+    //   else {
+    //     draw();
+    //     timerId = setInterval(moveDown, 1000);
+    //     nextRandom = Math.floor(Math.random() * theTetrominoes.length);
+    //     displayShape();
+    //   }
+    // });
+
     startButton.addEventListener('click', () => {
-      if(timerId) {
-        clearInterval(timerId);
-        timerId = null;
-      }
-      else {
+
+      if(timerId === null) {
         draw();
         timerId = setInterval(moveDown, 1000);
-        nextRandom = Math.floor(Math.random() * theTetrominoes.length);
+        nextRandom = Math.floor(Math.random() * theTetrominoes.legnth);
         displayShape();
       }
+    });
+
+    pauseButton.addEventListener('click', () => {
+      if(timerId) {
+        initialTimerId = 1;
+        clearInterval(timerId);
+        timerId = null;
+        displayShape(); 
+      }
+    });
+
+    resetButton.addEventListener('click', () => {
+      location.reload();
     });
 
 
@@ -214,9 +243,13 @@ document.addEventListener('keyup', control);
     //Game over 
     function gameOver() {
       if(current.some(index => squares[currentPosition + index].classList.contains('taken'))) {
-        scoreDisplay.innerHTML = ' : Game Over';
+        scoreDisplay.innerHTML = score;
+        alert("Game Over!");
         clearInterval(timerId);
+        isGameOver = true;
       }
+      if(isGameOver == true)
+        location.reload();
     }
 
 })
