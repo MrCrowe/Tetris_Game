@@ -1,10 +1,31 @@
-.container {
+html body {
+	max-width: 100%;
+	overflow-x: hidden;
+}
+#body-id {
+	background-color: #90EE90;
+}
+
+h1 {
+	text-align: center;
+}
+
+h2 {
+	text-align: center;
+}
+
+
+
+#main-container {
 	display: flex;
 	/*flex-wrap: wrap;*/
+	margin-left: 500px;
+	margin-top: 10px;
+
 }
 .grid {
-	width: 202px;
-	height: 402px;
+	width: 222px;
+	height: 442px;
 	display: flex;
 	flex-wrap: wrap;
 	background-color: yellow;
@@ -12,9 +33,10 @@
 }
 
 .grid div {
-	width: 20px;
-	height: 20px;
-	box-shadow: 2px solid black;
+	width: 22px;
+	height: 22px;
+	/*box-shadow: 1px solid black;*/
+	border: 1px solid grey;
 	/*border: 0px 1px 0px 1px;
 	border-style: solid;
 	border-color: black;*/
@@ -24,26 +46,42 @@
 .mini-grid {
 	display: flex;
 	flex-wrap: wrap;
-	width:82px;
-	height: 82px;
+	width:90px;
+	height: 90px;
 	background-color: yellow;
-	margin-left: 15px;
+	margin-left: 30px;
 	border: 1px solid black;
 }
 
 .mini-grid div {
-	width: 20px;
-	height: 20px;
+	width: 22px;
+	height: 22px;
+	border: 1px solid gray;
 }
 
 .tetromino {
 	background-color: blue;
 }
 
+.btn-div {
+	width: 400px;
+	height: 50px;
+	margin-left: 500px;
+	margin-bottom: 20px;
+}
+
 #start-button {
-	margin: 10px;
+	margin: 15px;
 }
 
 #pause-button {
-	margin: 10px;
+	margin: 15px;
+}
+
+#reset-button {
+	margin: 15px;
+}
+
+.invisible {
+	display: none;
 }

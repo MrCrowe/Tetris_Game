@@ -18,8 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const zTetromino = [
     [0, GRID_WIDTH, GRID_WIDTH + 1, GRID_WIDTH * 2 + 1],
     [GRID_WIDTH + 1, GRID_WIDTH + 2, GRID_WIDTH * 2, GRID_WIDTH * 2 + 1],
-    [0, GRID_WIDTH, GRID_WIDTH + 1, GRID_WIDTH * 2 + 1],
-    [GRID_WIDTH + 1, GRID_WIDTH + 2, GRID_WIDTH * 2, GRID_WIDTH * 2 + 1]
+    [2, GRID_WIDTH + 2, GRID_WIDTH + 1, GRID_WIDTH * 2 + 1],
+    [GRID_WIDTH, GRID_WIDTH + 1, GRID_WIDTH * 2 + 1, GRID_WIDTH * 2 + 2]
   ]
 
   const tTetromino = [
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let isGameOver = false;
   let initialTimerId = 0;
 
-  let colors = ['Black', 'Orange', 'Blue', 'Red', 'Brown'];
+  let colors = ['Black', 'Green', 'Blue', 'Red', 'Brown'];
 
   //Generating a random tetromino
   let random = Math.floor(Math.random()*theTetrominoes.length);
@@ -244,7 +244,7 @@ document.addEventListener('keyup', control);
     function gameOver() {
       if(current.some(index => squares[currentPosition + index].classList.contains('taken'))) {
         scoreDisplay.innerHTML = score;
-        alert("Game Over!");
+        alert(`Game Over! Your Final Score is : ${score}`);
         clearInterval(timerId);
         isGameOver = true;
       }

@@ -4,12 +4,15 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">	
 	<title>Tetris-Game</title>
 </head>
-<body>
+<body id="body-id">
+	<h1><strong>Tetris Game</strong></h1>
 	<h2>Score:<span id='score'>0</span></h2>
-	<button id="start-button">Start</button>
-	<button id="pause-button">Pause</button>
-	<button id="reset-button">Reset</button>
-	<div class="container">
+	<div class="btn-div">
+		<button type ="button" id="start-button" class="btn btn-primary">Start</button>
+		<button type="button" id="pause-button" class="btn btn-primary">Pause</button>
+		<button type="button" id="reset-button" class="btn btn-primary">Reset</button>
+	</div>
+	<div id="main-container"class="container">
 		<div class="grid">
 			<div></div>
 			<div></div>
@@ -211,16 +214,16 @@
 			<div></div>
 			<div></div>
 			<div></div>
-			<div class = "taken"></div>
-			<div class = "taken"></div>
-			<div class = "taken"></div>
-			<div class = "taken"></div>
-			<div class = "taken"></div>
-			<div class = "taken"></div>
-			<div class = "taken"></div>
-			<div class = "taken"></div>
-			<div class = "taken"></div>
-			<div class = "taken"></div>
+			<div class = "taken invisible"></div>
+			<div class = "taken invisible"></div>
+			<div class = "taken invisible"></div>
+			<div class = "taken invisible"></div>
+			<div class = "taken invisible"></div>
+			<div class = "taken invisible"></div>
+			<div class = "taken invisible"></div>
+			<div class = "taken invisible"></div>
+			<div class = "taken invisible"></div>
+			<div class = "taken invisible"></div>
 		</div>
 
 		<div class ="mini-grid">
