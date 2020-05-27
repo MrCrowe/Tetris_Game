@@ -104,7 +104,7 @@ document.addEventListener('keyup', control);
 
   // freeze function
   	function freeze() {
-  		if(current.some(index => squares[currentPosition+ GRID_WIDTH + index].classList.contains('taken'))) {
+  		if(current.some(index => squares[currentPosition + GRID_WIDTH + index].classList.contains('taken'))) {
   			current.forEach(index => squares[currentPosition + index].classList.add('taken'));
 
   			//start a new tetromino falling
@@ -135,9 +135,12 @@ document.addEventListener('keyup', control);
   	function moveRight() {
   		undraw();
 
-  		const isLeftEdge = current.some(index => (currentPosition + index) % GRID_WIDTH == GRID_WIDTH-1);
+  		const isRightEdge = current.some(index => (currentPosition + index) % GRID_WIDTH == GRID_WIDTH-1);
 
-  		if(!isLeftEdge)	 currentPosition += 1;
+      // if(!isRightEdge && !current.some(index => squares[currentPosition + index + 1].contains('taken')))
+      //   currentPosition += 1;
+
+  		if(!isRightEdge)	 currentPosition += 1;
   		if(current.some(index => squares[currentPosition + index].classList.contains('taken')))
   			currentPosition -= 1; 
   		draw();	
@@ -145,9 +148,15 @@ document.addEventListener('keyup', control);
 
   	function rotate() {
   		undraw();
-  		currentRotation++;
-  		if(currentRotation % current.length === 0)
-  			currentRotation = 0;
+      currentRotation++;
+      if(currentRotation % current.length === 0)
+        currentRotation = 0;
+      current = theTetrominoes[random][currentRotation];
+      if(current.some(index => (currentPosition + index) % GRID_WIDTH === 0) 
+        || current.some(index => (currentPosition + index) % GRID_WIDTH === GRID_WIDTH-1)) {
+  		  currentRotation--;
+      } 
+  		
 
   		current = theTetrominoes[random][currentRotation];
   		draw();
